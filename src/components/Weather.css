@@ -1,7 +1,7 @@
 @import 'tailwindcss';
 
 .weather {
-  @apply bg-white shadow-md rounded-2xl p-4 min-w-sm flex flex-col items-center gap-8
+  @apply bg-white shadow-md border border-blue-100 rounded-2xl p-4 min-w-80 flex flex-col items-center gap-8
 }
 
 
@@ -20,7 +20,7 @@
 
 /* Main Body Section */
 .weather-icon {
-  @apply w-32 
+  @apply w-38 
 }
 
 .location-data{
@@ -33,7 +33,7 @@
 
 /* Weather Data Section */
 .weather-data{
-  @apply w-full flex gap-4 justify-around
+  @apply w-full flex gap-4 justify-between
 }
 
 .weather-data .col{
