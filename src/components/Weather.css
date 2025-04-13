@@ -20,7 +20,7 @@
 
 /* Main Body Section */
 .weather-icon {
-  @apply w-40 
+  @apply w-32 
 }
 
 .location-data{
