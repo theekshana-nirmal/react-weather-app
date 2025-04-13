@@ -1,0 +1,5 @@
+@import 'tailwindcss';
+
+.app{
+  @apply h-screen w-screen flex items-center justify-center bg-white;
+}
