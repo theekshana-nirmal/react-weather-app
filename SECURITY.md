@@ -5,7 +5,6 @@
 If you discover a security vulnerability in this project, please **do not** open a public issue. Instead, contact the maintainer directly to report it privately.
 
 You can reach out via LinkedIn: [Theekshana Nirmal](https://www.linkedin.com/in/theekshana-nirmal-bandara/)
-*(Replace this with your actual email address or preferred contact method.)*
 
 We take all security concerns seriously and will review your report as quickly as possible. Responsible disclosure is appreciated and helps keep the community safe.
 
