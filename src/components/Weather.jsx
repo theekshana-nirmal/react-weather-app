@@ -17,6 +17,13 @@ const Weather = () => {
     setCity(e.target.value);
   };
 
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      getWeatherData(city);
+    }
+  };
+
   const allIcons = {
     "01d": clear_icon,
     "02d": cloud_icon,
@@ -38,6 +45,10 @@ const Weather = () => {
     "50n": drizzle_icon,
   };
   const getWeatherData = async (city_name) => {
+    if (city_name === "") {
+      alert("Please enter a city name");
+      return;
+    }
     try {
       const URL = `https://api.openweathermap.org/data/2.5/weather?q=${city_name}&appid=${
         import.meta.env.VITE_WEATHER_API_KEY
@@ -46,8 +57,14 @@ const Weather = () => {
       const response = await fetch(URL);
       const data = await response.json();
 
+      if (!response.ok) {
+        alert(data.message);
+        setWeatherData(false);
+        setCity("");
+        return;
+      }
 
-      console.log(data)
+      console.log(data);
       // Save Data to variables
       setWeatherData({
         city: data.name,
@@ -55,48 +72,65 @@ const Weather = () => {
         humidity: data.main.humidity,
         wind: data.wind.speed,
         icon: allIcons[data.weather[0].icon],
+        country: data.sys.country,
       });
-    } catch (error) {}
+    } catch (error) {
+      console.error("Error fetching weather data:", error);
+      setWeatherData(false);
+    }
   };
   return (
     <div className="weather">
       <div className="search-bar">
-        <input type="text" placeholder="Search" onChange={getCityName} />
+        <input
+          type="text"
+          placeholder="Search City"
+          onChange={getCityName}
+          onKeyDown={handleKeyPress}
+          value={city}
+        />
         <img src={search_icon} alt="" onClick={() => getWeatherData(city)} />
       </div>
-      <img
-        src={weatherData ? weatherData.icon : clear_icon}
-        alt=""
-        className="weather-icon"
-      />
-      <div className="location-data">
-        <p className="temperature">
-          {weatherData ? Math.round(weatherData.temperature) + "°C" : "0°C"}
-        </p>
-        <p className="location">
-          {weatherData ? weatherData.city : "City Name"}
-        </p>
-      </div>
-      <div className="weather-data">
-        <div className="col">
-          <img src={humidity_icon} alt="" />
-          <div>
-            <p>{weatherData ? weatherData.humidity + "%" : "0%"}</p>
-            <span>Humidity</span>
-          </div>
-        </div>
-        <div className="col">
-          <img src={wind_icon} alt="" />
-          <div>
-            <p>
-              {weatherData
-                ? Math.round(weatherData.wind * 10) / 10 + " Km/h"
-                : "0.0 Km/h"}
+      {weatherData ? (
+        <>
+          <img
+            src={weatherData ? weatherData.icon : clear_icon}
+            alt=""
+            className="weather-icon"
+          />
+          <div className="location-data">
+            <p className="temperature">
+              {weatherData ? Math.round(weatherData.temperature) + "°C" : "0°C"}
             </p>
-            <span>Wind Speed</span>
+            <p className="location">
+              {weatherData ? weatherData.city : "City Name"}
+              <span>{weatherData ? weatherData.country : "Country"}</span>
+            </p>
           </div>
-        </div>
-      </div>
+          <div className="weather-data">
+            <div className="col">
+              <img src={humidity_icon} alt="" />
+              <div>
+                <p>{weatherData ? weatherData.humidity + "%" : "0%"}</p>
+                <span>Humidity</span>
+              </div>
+            </div>
+            <div className="col">
+              <img src={wind_icon} alt="" />
+              <div>
+                <p>
+                  {weatherData
+                    ? Math.round(weatherData.wind * 10) / 10 + " Km/h"
+                    : "0.0 Km/h"}
+                </p>
+                <span>Wind Speed</span>
+              </div>
+            </div>
+          </div>
+        </>
+      ) : (
+        <></>
+      )}
     </div>
   );
 };
