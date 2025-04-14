@@ -10,7 +10,7 @@ This is a simple weather application built using React. It allows users to searc
 
 ## Technologies Used  
 - **React**: For building the user interface.  
-- **OpenWeatherMap API**: For fetching real-time weather data.  
+- **OpenWeatherMap API**: For fetching real-time weather data.  - [OpenWeatherMap API](https://openweathermap.org/api) 
 - **Tailwind CSS**: For styling the application.  
 
 ## How It Works  
@@ -50,9 +50,5 @@ This is a simple weather application built using React. It allows users to searc
 ## Future Improvements   
 - Implement a loading spinner while fetching data.  
 - Enhance the UI/UX with animations and better styling.  
-
-## Acknowledgments  
-- [OpenWeatherMap API](https://openweathermap.org/api) for providing the weather data.  
-- React documentation for guidance.  
 
 This project is a stepping stone in my React learning journey, and I look forward to building more complex applications in the future!  
