@@ -1,7 +1,7 @@
 @import 'tailwindcss';
 
 .weather {
-  @apply bg-white shadow-md border border-blue-100 rounded-2xl p-4 min-w-80 flex flex-col items-center gap-8
+  @apply bg-white shadow-md border border-blue-100 rounded-2xl p-4 min-w-80 flex flex-col items-center gap-8;
 }
 
 
@@ -15,43 +15,52 @@
 }
 
 .search-bar input {
-  @apply border border-gray-200 px-4 py-2 rounded-full flex-1/2 outline-none
+  @apply border border-gray-200 px-4 py-2 rounded-full flex-1/2 outline-none text-blue-500
 }
 
 /* Main Body Section */
 .weather-icon {
-  @apply w-38 
+  @apply w-38
 }
 
-.location-data{
+.location-data {
   @apply text-center text-gray-800
 }
-.temperature{
+
+.location {
+  @apply flex gap-1 items-baseline justify-center
+}
+
+.location span {
+  @apply text-[10px] text-gray-500
+}
+
+.temperature {
   @apply font-bold text-blue-400 text-6xl
 }
 
 
 /* Weather Data Section */
-.weather-data{
+.weather-data {
   @apply w-full flex gap-4 justify-between
 }
 
-.weather-data .col{
+.weather-data .col {
   @apply flex gap-4 justify-center items-start
 }
 
-.weather-data .col img{
-  @apply w-10 
+.weather-data .col img {
+  @apply w-10
 }
 
-.weather-data .col div{
+.weather-data .col div {
   @apply flex flex-col
 }
 
-.weather-data .col p{
+.weather-data .col p {
   @apply text-xl font-bold text-blue-400
 }
 
-.weather-data .col span{
+.weather-data .col span {
   @apply text-sm text-gray-800
 }
